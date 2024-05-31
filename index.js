@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const connectDB = require("./config/db");
+app.use(express.json());
 connectDB();
 const PORT = 8080;
 const petRoutes = require("./routes/petRoutes");
