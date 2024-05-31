@@ -23,5 +23,20 @@ module.exports = {
             console.error(e);
         }
         
+    },
+    removePet: async (req, res) => {
+        try{
+            await Pet.deleteOne({_id: req.params.id});
+            res.send("deleted");
+        }catch(e){
+            console.error(e);
+        }
+    },
+    updatePet: async (req, res) => {
+        try{
+            res.send(req.body.id);
+        }catch(e){
+            console.error(e);
+        }
     }
 }
