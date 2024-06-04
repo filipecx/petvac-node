@@ -10,6 +10,15 @@ module.exports = {
             console.error(e);
         }
     },
+    getPet: async (req, res) => {
+        try{
+            const pet = await Pet.find({name: req.params.petName});
+            console.log('petinfo')
+            res.json(pet);
+        }catch(e){
+            console.error(e);
+        }
+    },
     addPet: async (req, res) => {      
         try{
             const newPet = new Pet({
@@ -17,8 +26,8 @@ module.exports = {
                 picture: req.body.picture,
                 race: req.body.race
             })
-            let saved = await newPet.save();
-            res.send(saved);
+            let success = await newPet.save();
+            success? res.sendStatus(201): res.sendStatus(503);
         }catch(e){
             console.error(e);
         }
@@ -34,6 +43,7 @@ module.exports = {
     },
     updatePet: async (req, res) => {
         try{
+            console.log(req.body.id);
             res.send(req.body.id);
         }catch(e){
             console.error(e);
