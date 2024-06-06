@@ -15,8 +15,8 @@ module.exports = {
         try{
             const newVac = new Vaccine({
                 name: req.body.name,
-                firstShot: req.body.appDate,
-                secondShot: req.body.reAppDate,
+                firstShot: req.body.firstShot,
+                secondShot: req.body.secondShot,
                 vetName: req.body.vetName,
                 petName: req.body.petName
             });
