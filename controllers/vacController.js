@@ -5,13 +5,13 @@ module.exports = {
         try{
             let vaccinesList = [];
             vaccinesList = await Vaccine.find({petName: req.params.petName});
-            console.log(vaccinesList)
             res.json(vaccinesList);
         }catch(e){
             console.error(e);
         }
     },
     addVac: async (req, res) => {
+        console.log(req.body.firstShot)
         try{
             const newVac = new Vaccine({
                 name: req.body.name,
