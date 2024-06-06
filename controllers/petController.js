@@ -13,7 +13,8 @@ module.exports = {
     getPet: async (req, res) => {
         try{
             const pet = await Pet.find({name: req.params.petName});
-            res.json(pet);
+            console.log(pet)
+            res.status(200).send(pet);
         }catch(e){
             console.error(e);
         }
@@ -41,9 +42,18 @@ module.exports = {
         }
     },
     updatePet: async (req, res) => {
+        const updatedPet = new Pet({
+            name: req.body.name,
+            picture: req.body.picture,
+            race: req.body.race
+        });
         try{
-            console.log(req.body.id);
-            res.send(req.body.id);
+            const pet = await Pet.findOne({name: req.params.petName});
+            pet.name = updatedPet.name;
+            pet.picture = updatedPet.picture;
+            pet.race = updatedPet.race;
+            pet.save();            
+            res.sendStatus(204);
         }catch(e){
             console.error(e);
         }
