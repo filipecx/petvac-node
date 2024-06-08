@@ -52,7 +52,7 @@ module.exports = {
             pet.name = updatedPet.name;
             pet.picture = updatedPet.picture;
             pet.race = updatedPet.race;
-            pet.save();            
+            let success = pet.save();         
             res.sendStatus(204);
         }catch(e){
             console.error(e);
