@@ -13,7 +13,6 @@ module.exports = {
     getPet: async (req, res) => {
         try{
             const pet = await Pet.find({name: req.params.petName});
-            console.log(pet)
             res.status(200).send(pet);
         }catch(e){
             console.error(e);
